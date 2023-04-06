@@ -6,7 +6,28 @@ using namespace std;
 
 // definition of Merge2AscListsRecur 
 // (put here to facilitate grading)
-
+void Merge2AscListsRecur(Node*& xListHeadPtr,Node*& yListHeadPtr, Node*& zListHeadPtr){
+    if(xListHeadPtr == 0){
+        zListHeadPtr = yListHeadPtr;
+        cout << "X list ran out" << endl;
+        return;
+    }
+    else if(yListHeadPtr == 0){
+        zListHeadPtr = xListHeadPtr;
+        cout << "Y list ran out" << endl;
+        return;
+    }
+    if(xListHeadPtr->data <= yListHeadPtr->data){
+        zListHeadPtr = xListHeadPtr;
+        cout << zListHeadPtr->data << " added to Z" << endl;
+        Merge2AscListsRecur(xListHeadPtr->link,yListHeadPtr,zListHeadPtr->link);
+    }
+    else{
+        zListHeadPtr = yListHeadPtr;
+        cout << zListHeadPtr->data << " added to Z" << endl;
+        Merge2AscListsRecur(xListHeadPtr,yListHeadPtr->link,zListHeadPtr->link);
+    }
+}
 
 int FindListLength(Node* headPtr)
 {
