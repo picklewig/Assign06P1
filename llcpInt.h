@@ -21,7 +21,7 @@ void   FindMinMax(Node* headPtr, int& minValue, int& maxValue);
 double FindAverage(Node* headPtr);
 void   ListClear(Node*& headPtr, int noMsg = 0);
 
-void Merge2AscListsRecur(Node*& xListHeadPtr,Node*& yListHeadPtr, Node*& zListHeadPtr);
+void Merge2AscListsRecur(Node*& xListHeadPtr,Node*& yListHeadPtr, Node* zListHeadPtr);
 
 
 #endif

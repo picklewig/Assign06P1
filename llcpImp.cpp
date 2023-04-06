@@ -6,25 +6,28 @@ using namespace std;
 
 // definition of Merge2AscListsRecur 
 // (put here to facilitate grading)
-void Merge2AscListsRecur(Node*& xListHeadPtr,Node*& yListHeadPtr, Node*& zListHeadPtr){
-    if(xListHeadPtr == 0){
-        zListHeadPtr = yListHeadPtr;
-        cout << "X list ran out" << endl;
+void Merge2AscListsRecur(Node*& xListHeadPtr,Node*& yListHeadPtr, Node* zListHeadPtr){
+    if(xListHeadPtr == 0 and yListHeadPtr == 0){
         return;
+    }
+    /*else if(xListHeadPtr == 0){
+        zListHeadPtr = yListHeadPtr;
+        //cout << "Reached end of X list" << endl;
+        Merge2AscListsRecur(xListHeadPtr,yListHeadPtr->link,zListHeadPtr->link);
     }
     else if(yListHeadPtr == 0){
         zListHeadPtr = xListHeadPtr;
-        cout << "Y list ran out" << endl;
-        return;
-    }
-    if(xListHeadPtr->data <= yListHeadPtr->data){
+        //cout << "Reached end of Y list" << endl;
+        Merge2AscListsRecur(xListHeadPtr->link,yListHeadPtr,zListHeadPtr->link);
+    }*/
+    else if(yListHeadPtr == 0 or xListHeadPtr->data <= yListHeadPtr->data){
         zListHeadPtr = xListHeadPtr;
-        cout << zListHeadPtr->data << " added to Z" << endl;
+        //cout << zListHeadPtr->data << " added to Z from X" << endl;
         Merge2AscListsRecur(xListHeadPtr->link,yListHeadPtr,zListHeadPtr->link);
     }
-    else{
+    else if(xListHeadPtr == 0 or xListHeadPtr->data > yListHeadPtr->data){
         zListHeadPtr = yListHeadPtr;
-        cout << zListHeadPtr->data << " added to Z" << endl;
+        //cout << zListHeadPtr->data << " added to Z from Y" << endl;
         Merge2AscListsRecur(xListHeadPtr,yListHeadPtr->link,zListHeadPtr->link);
     }
 }
